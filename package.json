@@ -1,0 +1,33 @@
+{
+  "name": "node-qt5",
+  "version": "0.0.1",
+  "author": "Ibnu Yahya <anak10thn@gmail.com>",
+  "description": "Qt5 bindings for Node.js",
+  "license": "BSD-3-Clause",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/anak10thn/node-qt5.git"
+  },
+  "homepage": "http://github.com/anak10thn/node-qt5",
+  "main": "./lib/qt5.js",
+  "keywords": [
+    "qt",
+    "gui",
+    "ui",
+    "graphics",
+    "audio",
+    "webkit"
+  ],
+  "engines": {
+    "node": ">=0.6.14"
+  },
+  "dependencies": {
+    "nan": "^2.10.0",
+    "shelljs": "0.0.5pre4"
+  },
+  "scripts": {
+    "install": "node-gyp rebuild"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
