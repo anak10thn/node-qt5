@@ -34,6 +34,7 @@ using v8::Object;
 void Initialize(Local<Object> target) {
   QApplicationWrap::Initialize(target);
   // QWidgetWrap::Initialize(target);
+  QPushButtonWrap::Initialize(target);
   QSizeWrap::Initialize(target);
   // QMouseEventWrap::Initialize(target);
   // QKeyEventWrap::Initialize(target);

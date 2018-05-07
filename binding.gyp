@@ -12,6 +12,7 @@
             # 'src/QtGui/qpainter.cc'
             #
             # 'src/QtTest/qtesteventlist.cc'
+            'src/QtWidgets/qpushbutton.cc'
         ],
         'conditions': [
             [
