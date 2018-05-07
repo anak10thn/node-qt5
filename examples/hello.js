@@ -9,9 +9,7 @@ var hello = new qt.QPushButton('Hello World', function () {
 hello.setGeometry(500, 500, 500, 500);
 hello.show();
 
-var hello = new qt.QPushButton('Hello World', function () {
-    console.log('hi');
-});
+var hello = new qt.QPushButton;
 hello.setGeometry(500, 500, 500, 500);
 hello.show();
 
