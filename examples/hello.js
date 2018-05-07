@@ -17,4 +17,15 @@ var qt = require('..'),
 // window.show();
 //
 // // Join Node's event loop
-setInterval(app.processEvents, 0);
+// setInterval(app.processEvents, 0);
+
+global.app = app;
+
+// var hello = new qt.QPushButton('Hello World', function() {
+//     console.log('hi');
+// });
+// hello.setGeometry(200,200,200,200);
+// hello.show();
+
+// Start application
+app.exec();

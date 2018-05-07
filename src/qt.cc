@@ -16,9 +16,12 @@
 #include "QtGui/qpainterpath.h"
 #include "QtGui/qfont.h"
 #include "QtGui/qmatrix.h"
+
 #include "QtMultimedia/qsound.h"
+
 #include "QtWidgets/qscrollarea.h"
 #include "QtWidgets/qscrollbar.h"
+#include "QtWidgets/qpushbutton.h"
 
 #include "QtTest/qtesteventlist.h"
 

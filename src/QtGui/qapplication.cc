@@ -39,6 +39,7 @@ void QApplicationWrap::Initialize(Local<Object> exports) {
   // Prototype
   NODE_SET_PROTOTYPE_METHOD(tpl, "processEvents", ProcessEvents);
   NODE_SET_PROTOTYPE_METHOD(tpl, "exec", Exec);
+  NODE_SET_PROTOTYPE_METHOD(tpl, "setStyleSheet", SetStyleSheet);
 
   constructor.Reset(isolate, tpl->GetFunction());
   exports->Set(String::NewFromUtf8(isolate, "QApplication"),
@@ -75,6 +76,17 @@ void QApplicationWrap::ProcessEvents(const v8::FunctionCallbackInfo<v8::Value>& 
 }
 
 void QApplicationWrap::Exec(const v8::FunctionCallbackInfo<v8::Value>& args) {
+  Isolate* isolate = args.GetIsolate();
+
+  QApplicationWrap* w = ObjectWrap::Unwrap<QApplicationWrap>(args.This());
+  QApplication* q = w->GetWrapped();
+
+  q->exec();
+
+  args.GetReturnValue().Set(Undefined(isolate));
+}
+
+void QApplicationWrap::SetStyleSheet(const v8::FunctionCallbackInfo<v8::Value>& args) {
   Isolate* isolate = args.GetIsolate();
 
   QApplicationWrap* w = ObjectWrap::Unwrap<QApplicationWrap>(args.This());
