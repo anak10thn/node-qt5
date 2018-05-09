@@ -12,7 +12,8 @@
             # 'src/QtGui/qpainter.cc'
             #
             # 'src/QtTest/qtesteventlist.cc'
-            'src/QtWidgets/qpushbutton.cc'
+            'src/QtWidgets/qpushbutton.cc',
+            'src/QtQml/qqmlapplicationengine.cc'
         ],
         'conditions': [
             [
@@ -57,13 +58,13 @@
                         "<!(node -e \"require('nan')\")",
                     ],
                     'cflags': [
-                        '<!@(pkg-config --cflags Qt5Core Qt5Gui Qt5Test Qt5Multimedia Qt5Widgets)'
+                        '<!@(pkg-config --cflags Qt5Core Qt5Gui Qt5Test Qt5Multimedia Qt5Widgets Qt5Quick Qt5Qml)'
                     ],
                     'ldflags': [
-                        '<!@(pkg-config --libs-only-L --libs-only-other Qt5Core Qt5Gui Qt5Test Qt5Multimedia Qt5Widgets)'
+                        '<!@(pkg-config --libs-only-L --libs-only-other Qt5Core Qt5Gui Qt5Test Qt5Multimedia Qt5Widgets Qt5Quick Qt5Qml)'
                     ],
                     'libraries': [
-                        '<!@(pkg-config --libs-only-l Qt5Core Qt5Gui Qt5Test Qt5Multimedia Qt5Widgets)'
+                        '<!@(pkg-config --libs-only-l Qt5Core Qt5Gui Qt5Test Qt5Multimedia Qt5Widgets Qt5Quick Qt5Qml)'
                     ]
                 }
             ],

@@ -5,3 +5,4 @@ out/
 Release/
 npm-debug.log
 .ropeproject
+*.qmlc

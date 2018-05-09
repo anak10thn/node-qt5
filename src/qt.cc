@@ -25,6 +25,8 @@
 
 #include "QtTest/qtesteventlist.h"
 
+#include "QtQml/qqmlapplicationengine.h"
+
 namespace qt5 {
 
 using v8::Local;
@@ -36,6 +38,7 @@ void Initialize(Local<Object> target) {
   // QWidgetWrap::Initialize(target);
   QPushButtonWrap::Initialize(target);
   QSizeWrap::Initialize(target);
+  QQmlApplicationEngineWrap::Initialize(target);
   // QMouseEventWrap::Initialize(target);
   // QKeyEventWrap::Initialize(target);
   // QTestEventListWrap::Initialize(target);
