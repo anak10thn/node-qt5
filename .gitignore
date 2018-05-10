@@ -6,3 +6,5 @@ Release/
 npm-debug.log
 .ropeproject
 *.qmlc
+deps/qt-5.10.1/darwin/x64/include
+deps/qt-5.10.1/darwin/x64/lib
