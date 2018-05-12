@@ -4,5 +4,5 @@ var qt = require('..'),
 global.app = app;
 
 var hello = new qt.QQmlApplicationEngine;
-hello.load("examples/test.qml");
+hello.load("examples/browser.qml");
 app.exec();
