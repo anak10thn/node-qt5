@@ -88,7 +88,7 @@ ApplicationWindow {
 	WebEngineView {
 		id: webview;
 		anchors.fill: parent;
-		url: 'https://www.google.com/'
+		url: 'https://github.com/anak10thn/node-qt5'
 		opacity: 0;
 		scale: 0;
 
