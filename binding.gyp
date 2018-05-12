@@ -11,47 +11,40 @@
             # 'src/QtGui/qwidget.cc'
             # 'src/QtGui/qpainter.cc'
             #
-            # 'src/QtTest/qtesteventlist.cc'
+            # 'src/QtTest/qtesteventlist.cc',
             'src/QtWidgets/qpushbutton.cc',
             'src/QtQml/qqmlapplicationengine.cc'
         ],
         'conditions': [
-            [
-                'OS=="mac"',
-                {
-                    'include_dirs': [
-                        "<!(node -e \"require('nan')\")",
-                        'deps/qt-5.10.1/darwin/x64/include',
-                        'deps/qt-5.10.1/darwin/x64/include/QtCore',
-                        'deps/qt-5.10.1/darwin/x64/include/QtGui',
-                        'deps/qt-5.10.1/darwin/x64/include/QtTest'
+            ['OS=="mac"', {
+                'xcode_settings': {
+                    'LD_RUNPATH_SEARCH_PATHS': [
+                        '@excutable_path/deps/qt-5.10.1/darwin/x64/Frameworks',
+                        '@loader_path/deps/qt-5.10.1/darwin/x64/Frameworks',
+                        '@excutable_path/../deps/qt-5.10.1/darwin/x64/Frameworks',
+                        '@loader_path/../deps/qt-5.10.1/darwin/x64/Frameworks',
+                        '@excutable_path/../../deps/qt-5.10.1/darwin/x64/Frameworks',
+                        '@loader_path/../../deps/qt-5.10.1/darwin/x64/Frameworks'
                     ],
-                    'libraries': [
-                        # TODO: fix node-gyp behavior that requires ../
-                        '-Wl,-rpath,@loader_path/../deps/qt-5.10.1/darwin/x64/lib/QtCore.framework/QtCore',
-                        '-Wl,-rpath,@loader_path/../deps/qt-5.10.1/darwin/x64/lib/QtGui.framework/QtGui',
-                        '-Wl,-rpath,@loader_path/../deps/qt-5.10.1/darwin/x64/lib/QtTest.framework/QtTest'
+                    'OTHER_CPLUSPLUSFLAGS': [
+                        '-stdlib=libc++',
+                        '-std=c++11',
+                        '-mmacosx-version-min=10.7',
+                        '-Wno-inconsistent-missing-override',
+                        '-Woverloaded-virtual',
+                        '<!@(tools/mac.sh --cflags)'
                     ],
-                    'xcode_settings': {
-                        'GCC_ENABLE_CPP_EXCEPTIONS':
-                        'YES',
-                        'OTHER_CFLAGS': [
-                            '-g', '-mmacosx-version-min=10.7', '-std=c++11',
-                            '-stdlib=libc++', '-O3',
-                            '-D__STDC_CONSTANT_MACROS',
-                            '-D_FILE_OFFSET_BITS=64', '-D_LARGEFILE_SOURCE',
-                            '-Wall'
-                        ],
-                        'OTHER_CPLUSPLUSFLAGS': [
-                            '-g', '-mmacosx-version-min=10.7', '-std=c++11',
-                            '-stdlib=libc++', '-O3',
-                            '-D__STDC_CONSTANT_MACROS',
-                            '-D_FILE_OFFSET_BITS=64', '-D_LARGEFILE_SOURCE',
-                            '-Wall'
-                        ]
-                    }
-                }
-            ],
+                    'GCC_ENABLE_CPP_EXCEPTIONS': 'YES'
+                },
+                'include_dirs': [
+                    "<!(node -e \"require('nan')\")",
+                    '<!@(tools/mac.sh --include-dirs QtTest QtGui QtCore QtQuick QtQml QtMultimedia QtWidgets QtQuickControls2)'
+                ],
+                'libraries': [
+                    '-undefined dynamic_lookup',
+                    '<!@(tools/mac.sh --libs QtGui QtCore QtQuick QtQml QtMultimedia QtWidgets QtQuickControls2 QtTest)'
+                ]
+            }],
             [
                 'OS=="linux"', {
                     'include_dirs': [
